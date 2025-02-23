@@ -2,11 +2,9 @@ import cv2
 import os
 import numpy as np
 
-#folder
 outputFolder = "photo"
 mosaicFolder = "mozaika"
 
-# Načítanie 4 obrázkov
 image_filenames = [f"snimka{i+1}.jpg" for i in range(4)]
 images = []
 
@@ -17,7 +15,7 @@ for filename in image_filenames:
         images.append(cv2.resize(img, (500, 500)))  
     else:
         print(f"Chyba: Súbor {filename} neexistuje!")
-        exit(1)  # Ukončí program s chybovým kódom
+        exit(1)  
         
 mosaic = np.vstack([np.hstack([images[0], images[1]]), np.hstack([images[2], images[3]])])
 mosaic_path = os.path.join(mosaicFolder, "mozaika1.jpg")
